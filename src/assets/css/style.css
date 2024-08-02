@@ -19,6 +19,15 @@ body, h2, button {
   color: #a4a4a4;
 }
 
+.input-search {
+  font-size: 17pt;
+}
+@media screen and (min-width: 768px) {
+  .input-search {
+    font-size: medium;
+  }
+}
+
 header {
   background-color: #000;
   padding: 1rem;
@@ -42,6 +51,8 @@ main section {
 }
 @media screen and (min-width: 768px) {
   main section {
+    width: 90%;
+    margin: auto;
     display: flex;
     position: relative;
     flex-wrap: wrap;
@@ -180,6 +191,13 @@ main section figure img:hover {
   width: 100%;
   border-radius: 30px;
 }
+@media screen and (min-width: 768px) {
+  .movie-genre {
+    width: 250px;
+    height: 450px;
+    margin: 10px auto 10px auto;
+  }
+}
 
 .movie-title {
   text-decoration: none;
@@ -264,6 +282,11 @@ main section figure img:hover {
   flex-direction: row;
   overflow-x: auto;
 }
+@media screen and (min-width: 768px) {
+  .genre-links {
+    flex-wrap: wrap;
+  }
+}
 
 .genre-link {
   border: none;
@@ -314,7 +337,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 84px;
+  height: 60px;
   background-color: black;
   align-content: center;
   justify-items: space-between;

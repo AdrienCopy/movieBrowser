@@ -1,6 +1,8 @@
 import { Form, Link } from "react-router-dom";
 import React, { useState } from 'react';
 import { fetchMovies } from "../api"
+import Glass from '../assets/picture/glass-search.svg';
+import BtnSearch from "./BtnSearch";
 
 export default function MovieSearch () {
     const [query, setQuery] = useState('');
@@ -21,9 +23,7 @@ export default function MovieSearch () {
     return (
         <div>
             <Form id="movie-search" onSubmit={handleSubmit} role="search">
-             <button type="submit" className="search-button">
-                <img src="src/assets/picture/glass-search.svg" />
-            </button> 
+              <BtnSearch glass={Glass} />
              <input
                 type="text"
                 value={query}

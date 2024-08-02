@@ -9,6 +9,8 @@ main {
         scroll-snap-type: x mandatory;
         //justify-content: space-around;
         @include computer {
+            width: 90%;
+            margin: auto;
             display: flex;
             position: relative;
             flex-wrap: wrap;
@@ -149,6 +151,11 @@ main {
         width: 100%;
         border-radius: 30px;
     }
+    @include computer {
+        width: 250px;
+        height: 450px;
+        margin: 10px auto 10px auto;
+    }
 }
 
 .movie-title {
@@ -227,6 +234,9 @@ main {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
+    @include computer {
+        flex-wrap: wrap;
+    }
 }
 
 .genre-link {

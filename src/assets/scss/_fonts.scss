@@ -13,3 +13,10 @@ body, h2, button {
     font-size: 10pt;
     color: #a4a4a4;
 }
+
+.input-search {
+    font-size: 17pt;
+    @include computer {
+        font-size: medium;
+    }
+}

@@ -36,3 +36,45 @@ export const fetchMovieDetail = async (id) => {
     const data = await response.json();
     return data;
 }
+
+export const fetchRequestToken = async () => {
+    const response = await fetch(`${apiUrl}/authentication/token/new?api_key=${tmdbApiKey}`);
+    const data = await response.json();
+    return data.request_token;
+  };
+
+export const validateRequestToken = async (username, password, requestToken) => {
+  const response = await fetch(`${apiUrl}/authentication/token/validate_with_login?api_key=${tmdbApiKey}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+      password,
+      request_token: requestToken,
+    }),
+  });
+  const data = await response.json();
+  return data.success;
+};
+
+export const createSession = async (requestToken) => {
+    const response = await fetch(`${apiUrl}/authentication/session/new?api_key=${tmdbApiKey}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        request_token: requestToken,
+      }),
+    });
+    const data = await response.json();
+    return data.session_id;
+  };
+  
+export const fetchUserInfo = async (sessionId) => {
+  const response = await fetch(`${apiUrl}/account?api_key=${tmdbApiKey}&session_id=${sessionId}`);
+  const data = await response.json();
+  return data;
+};
