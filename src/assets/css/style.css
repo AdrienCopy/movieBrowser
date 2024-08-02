@@ -40,6 +40,14 @@ main section {
   white-space: nowrap;
   scroll-snap-type: x mandatory;
 }
+@media screen and (min-width: 768px) {
+  main section {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    margin-bottom: 65px;
+  }
+}
 main section figure {
   position: relative;
   overflow: hidden;
@@ -47,7 +55,6 @@ main section figure {
   margin: 0;
   width: 100%;
   height: 100%;
-  position: relative;
   align-content: center;
 }
 main section figure img {
@@ -59,7 +66,7 @@ main section figure img {
   transition: transform 0.9s ease;
 }
 main section figure img:hover {
-  transform: scale(1.3);
+  transform: scale(1.1);
 }
 
 .container {
@@ -82,6 +89,13 @@ main section figure img:hover {
   padding: 0;
   border-radius: 30px;
   scroll-snap-align: center;
+}
+@media screen and (min-width: 768px) {
+  .movie-card {
+    width: 250px;
+    height: 450px;
+    margin: 10px auto 10px auto;
+  }
 }
 
 .movie-info {
@@ -125,8 +139,23 @@ main section figure img:hover {
 .movie-details {
   width: 100%;
 }
+@media screen and (min-width: 768px) {
+  .movie-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 75px;
+  }
+}
 .movie-details img {
   width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .movie-details img {
+    border-radius: 30px;
+    width: 25%;
+    height: 25%;
+    margin: 2%;
+  }
 }
 
 .movie-results {
@@ -159,6 +188,11 @@ main section figure img:hover {
 
 .detail {
   margin: 5%;
+}
+@media screen and (min-width: 768px) {
+  .detail {
+    width: 60%;
+  }
 }
 
 .detail-row {
