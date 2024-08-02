@@ -1,0 +1,14 @@
+@import "reset";
+@import "mixins";
+@import "fonts";
+@import "header";
+@import "main";
+@import "footer";
+
+
+
+body {
+    margin: 0;
+    background-color: #15141F;
+    color: #fff;
+  }
