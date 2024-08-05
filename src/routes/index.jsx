@@ -11,7 +11,6 @@ export default function Index() {
             try {
                 const movies = await fetchMovieTrending();
                 setMovies(movies);
-                console.log("Data: ", movies);
     
                 if (movies.length > 0) {
                     const randomMovieId = movies[Math.floor(Math.random() * movies.length)].id;

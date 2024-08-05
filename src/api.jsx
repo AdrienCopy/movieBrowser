@@ -72,9 +72,59 @@ export const createSession = async (requestToken) => {
     const data = await response.json();
     return data.session_id;
   };
-  
+
 export const fetchUserInfo = async (sessionId) => {
-  const response = await fetch(`${apiUrl}/account?api_key=${tmdbApiKey}&session_id=${sessionId}`);
+    const userInfoResponse = await fetch(`${apiUrl}/account?api_key=${tmdbApiKey}&session_id=${sessionId}`);
+    const userInfo = await userInfoResponse.json();
+
+    const favoriteMoviesResponse = await fetch(`${apiUrl}/account/${userInfo.id}/favorite/movies?api_key=${tmdbApiKey}&session_id=${sessionId}`);
+    const favoriteMovies = await favoriteMoviesResponse.json();
+
+    return {
+        userInfo,
+        favoriteMovies: favoriteMovies.results
+  };
+};
+
+export const fetchAddFavorite = async (sessionId, accountId, movieId) => {
+  const response = await fetch(`${apiUrl}/account/${accountId}/favorite?api_key=${tmdbApiKey}&session_id=${sessionId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      media_type: 'movie',
+      media_id: movieId,
+      favorite: true
+    })
+  });
+
   const data = await response.json();
   return data;
+};
+
+export const toggleFavorite = async (sessionId, userId, movieId, isFavorite) => {
+  const response = await fetch(`${apiUrl}/account/${userId}/favorite?api_key=${tmdbApiKey}&session_id=${sessionId}`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          media_type: 'movie',
+          media_id: movieId,
+          favorite: !isFavorite,
+      }),
+      params: {
+          api_key: tmdbApiKey,
+          session_id: sessionId
+      }
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error('Error response:', errorData);
+    throw new Error('Failed to toggle favorite status');
+  }
+
+  return response.json();
 };

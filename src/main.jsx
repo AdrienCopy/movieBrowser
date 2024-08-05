@@ -11,6 +11,7 @@ import Index from "./routes/index";
 import Movie from './routes/movie';
 import Search from './routes/search';
 import Profil from './routes/profil';
+import { AuthProvider } from './components/AuthContext';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

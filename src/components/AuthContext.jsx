@@ -20,11 +20,11 @@ const login = (sessionId) => {
     setSessionId(sessionId);
   };
 
-  const logout = () => {
-    localStorage.removeItem('session_id');
-    setSessionId(null);
-    setUser(null);
-  };
+const logout = () => {
+  localStorage.removeItem('session_id');
+  setSessionId(null);
+  setUser(null);
+};
 
   return (
     <AuthContext.Provider value={{ sessionId, user, login, logout }}>

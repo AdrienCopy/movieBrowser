@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { fetchMovieDetail, fetchMovieVideos } from "../api";
+import { fetchMovieDetail, fetchMovieVideos, toggleFavorite } from "../api";
+import { AuthContext } from "../components/AuthContext";
 
 export default function Movie() {
     const { id } = useParams(); // Récupère l'ID du film à partir de l'URL
     const [movie, setMovie] = useState(null);
     const [videos, setVideos] = useState([]);
+    const [isFavorite, setIsFavorite] = useState(false);
+    const { sessionId, user } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const getMovieDetail = async () => {
@@ -23,9 +27,35 @@ export default function Movie() {
         getMovieVideo();
     }, [id]);
 
+    useEffect(() => {
+        const checkIfFavorite = async () => {
+            if (sessionId && user) {
+                const favoriteMovie = user.favoriteMovies.find(favMovie => favMovie.id === parseInt(id));
+                setIsFavorite(!!favoriteMovie);
+            }
+        };
+        checkIfFavorite();
+    }, [sessionId, user, id]);
+
     if (!movie) {
         return <div>Loading...</div>;
     }
+    
+    const handleFavoriteToggle = async () => {
+        if (!sessionId || !user) {
+            alert('You must be logged in to add favorites.');
+            return;
+        }
+
+        try {
+            await toggleFavorite(sessionId, user.userInfo.id, id, isFavorite);
+            setIsFavorite(!isFavorite);
+            //alert(`Movie ${isFavorite ? 'removed from' : 'added to'} favorites!`);
+        } catch (error) {
+            console.error('Error toggling favorite movie:', error);
+            alert('Failed to toggle movie favorite status.');
+        }
+    };
 
     const firstVideo = videos.length > 0 ? videos[0] : null;
 
@@ -36,6 +66,9 @@ export default function Movie() {
                 <div className="detail-row">
                     <p>{movie.runtime} minutes</p>
                     <p> &#9733; {movie.vote_average.toFixed(1)} (IMDb)</p>
+                    <button className="favorite" onClick={handleFavoriteToggle} disabled={isLoading}>
+                        {isLoading ? 'Loading...' : isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+                    </button>
                 </div>
                 <h1>{movie.title}</h1>
                 

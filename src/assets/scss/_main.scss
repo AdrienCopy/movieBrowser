@@ -203,7 +203,18 @@ main {
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
-
+.favorite {
+    margin: 20px auto;
+    padding: 0px 10px 0px 10px;
+    height: 25px;
+    width: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    @include computer {
+        margin: auto;
+    }
+}
 .video-container {
     margin: 20px 0 20px 0;
     iframe {
