@@ -86,7 +86,7 @@ export const fetchUserInfo = async (sessionId) => {
   };
 };
 
-export const fetchAddFavorite = async (sessionId, accountId, movieId) => {
+/*export const fetchAddFavorite = async (sessionId, accountId, movieId) => {
   const response = await fetch(`${apiUrl}/account/${accountId}/favorite?api_key=${tmdbApiKey}&session_id=${sessionId}`, {
     method: 'POST',
     headers: {
@@ -101,7 +101,7 @@ export const fetchAddFavorite = async (sessionId, accountId, movieId) => {
 
   const data = await response.json();
   return data;
-};
+};*/
 
 export const toggleFavorite = async (sessionId, userId, movieId, isFavorite) => {
   const response = await fetch(`${apiUrl}/account/${userId}/favorite?api_key=${tmdbApiKey}&session_id=${sessionId}`, {
@@ -114,10 +114,6 @@ export const toggleFavorite = async (sessionId, userId, movieId, isFavorite) => 
           media_id: movieId,
           favorite: !isFavorite,
       }),
-      params: {
-          api_key: tmdbApiKey,
-          session_id: sessionId
-      }
   });
 
   if (!response.ok) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { fetchMovieDetail, fetchMovieVideos, toggleFavorite } from "../api";
+import { fetchMovieDetail, fetchMovieVideos, toggleFavorite, fetchUserInfo } from "../api";
 import { AuthContext } from "../components/AuthContext";
 
 export default function Movie() {
@@ -30,20 +30,19 @@ export default function Movie() {
     useEffect(() => {
         const checkIfFavorite = async () => {
             if (sessionId && user) {
-                const favoriteMovie = user.favoriteMovies.find(favMovie => favMovie.id === parseInt(id));
+                const data = await fetchUserInfo(sessionId);
+                const favoriteMovie = data.favoriteMovies.find(favMovie => favMovie.id === parseInt(id));
                 setIsFavorite(!!favoriteMovie);
             }
         };
         checkIfFavorite();
     }, [sessionId, user, id]);
 
-    if (!movie) {
-        return <div>Loading...</div>;
-    }
-    
     const handleFavoriteToggle = async () => {
+        setIsLoading(true);
         if (!sessionId || !user) {
             alert('You must be logged in to add favorites.');
+            setIsLoading(false);
             return;
         }
 
@@ -51,11 +50,18 @@ export default function Movie() {
             await toggleFavorite(sessionId, user.userInfo.id, id, isFavorite);
             setIsFavorite(!isFavorite);
             //alert(`Movie ${isFavorite ? 'removed from' : 'added to'} favorites!`);
+
         } catch (error) {
             console.error('Error toggling favorite movie:', error);
             alert('Failed to toggle movie favorite status.');
+        } finally {
+            setIsLoading(false);
         }
     };
+
+    if (!movie) {
+        return <div>Loading...</div>;
+    }
 
     const firstVideo = videos.length > 0 ? videos[0] : null;
 
