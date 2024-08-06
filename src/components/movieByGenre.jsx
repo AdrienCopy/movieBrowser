@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { fetchGenres, fetchMoviesByGenre } from '../api';
 import { Link } from "react-router-dom";
 import BtnGenre from './BtnGenre';
+import Pagination from './Pagination';
 
 export default function MoviesByGenre () {
     const [genres, setGenres] = useState([]);
-    const [selectedGenre, setSelectedGenre] = useState('');
+    const [selectedGenre, setSelectedGenre] = useState(null);
     const [movies, setMovies] = useState([]);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const MAX_PAGE = 500;
 
     useEffect(() => {
         const getGenres = async () => {
@@ -20,13 +24,18 @@ export default function MoviesByGenre () {
     useEffect(() => {
         if (selectedGenre) {
             const getMovies = async () => {
-                const moviesList = await fetchMoviesByGenre(selectedGenre);
-                setMovies(moviesList);
+                const data = await fetchMoviesByGenre(selectedGenre, page);
+                const validTotalPages = Math.min(data.totalPages, MAX_PAGE);
+                    if (page > validTotalPages) {
+                        setPage(validTotalPages); // Ajuster la page si elle dépasse le maximum
+                    }
+                setMovies(data.movies);
+                setTotalPages(validTotalPages)
             };
 
             getMovies();
         }
-    }, [selectedGenre]);
+    }, [selectedGenre, page]);
 
     const handleGenreClick = (genreId) => {
         setSelectedGenre(genreId);
@@ -49,6 +58,7 @@ export default function MoviesByGenre () {
                     />
                 ))}
             </div>
+            
             <div className="movie-results">
                 {movies.map(movie => (
                     <div key={movie.id} className="movie-genre">
@@ -62,7 +72,15 @@ export default function MoviesByGenre () {
                     </Link>
                     </div>
                 ))}
+                {totalPages > 1 && (
+                    <Pagination
+                        currentPage={page}
+                        totalPages={totalPages}
+                        onPageChange={setPage}
+                    />
+                )}
             </div>
+            
         </div>
     );
 };

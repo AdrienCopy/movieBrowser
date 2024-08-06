@@ -69,6 +69,13 @@ main {
     }
   }
 
+.movie-card--first {
+    margin-left: 50%;
+    @include computer {
+        margin: 2%;
+    }
+}
+
 .movie-info {
     position: absolute;
     width: 80%;
@@ -151,6 +158,9 @@ main {
         width: 100%;
         border-radius: 30px;
     }
+    a {
+        text-decoration: none;
+    }
     @include computer {
         width: 250px;
         height: 450px;
@@ -205,16 +215,38 @@ main {
 }
 .favorite {
     margin: 20px auto;
-    padding: 0px 10px 0px 10px;
-    height: 25px;
-    width: auto;
+    //padding: 5px 0;
+    width: 30%;
+    height: 30px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 25px;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    img {
+        padding: 2px;
+        width: 85%;
+        height: 85%;
+    }
     @include computer {
         margin: auto;
+        width: 30%;
+        padding: 0;
+        height: 30px;
+        img {
+            margin: 0;
+            width: 80%;
+            height: 80%;
+        }
     }
 }
+
+.heart {
+    filter: invert(100%);
+}
+
+.heartSolid {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(27%) saturate(5880%) hue-rotate(338deg) brightness(113%) contrast(94%);
+}
+
 .video-container {
     margin: 20px 0 20px 0;
     iframe {
@@ -296,6 +328,7 @@ main {
         left: 20px;
         filter: invert(100%);
         border: 0;
+        background:  none;
     }
     
 }

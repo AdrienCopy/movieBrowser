@@ -113,6 +113,15 @@ main section figure img:hover {
   }
 }
 
+.movie-card--first {
+  margin-left: 50%;
+}
+@media screen and (min-width: 768px) {
+  .movie-card--first {
+    margin: 2%;
+  }
+}
+
 .movie-info {
   position: absolute;
   width: 80%;
@@ -195,6 +204,9 @@ main section figure img:hover {
   width: 100%;
   border-radius: 30px;
 }
+.movie-genre a {
+  text-decoration: none;
+}
 @media screen and (min-width: 768px) {
   .movie-genre {
     width: 250px;
@@ -255,17 +267,37 @@ main section figure img:hover {
 
 .favorite {
   margin: 20px auto;
-  padding: 0px 10px 0px 10px;
-  height: 25px;
-  width: auto;
+  width: 30%;
+  height: 30px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 25px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+.favorite img {
+  padding: 2px;
+  width: 85%;
+  height: 85%;
+}
 @media screen and (min-width: 768px) {
   .favorite {
     margin: auto;
+    width: 30%;
+    padding: 0;
+    height: 30px;
   }
+  .favorite img {
+    margin: 0;
+    width: 80%;
+    height: 80%;
+  }
+}
+
+.heart {
+  filter: invert(100%);
+}
+
+.heartSolid {
+  filter: brightness(0) saturate(100%) invert(45%) sepia(27%) saturate(5880%) hue-rotate(338deg) brightness(113%) contrast(94%);
 }
 
 .video-container {
@@ -350,6 +382,36 @@ main section figure img:hover {
   left: 20px;
   filter: invert(100%);
   border: 0;
+  background: none;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination button:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  padding: 5px 10px;
 }
 
 footer {

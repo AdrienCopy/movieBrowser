@@ -2,6 +2,9 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieDetail, fetchMovieVideos, toggleFavorite, fetchUserInfo } from "../api";
 import { AuthContext } from "../components/AuthContext";
+import BtnFavorite from "../components/BtnFavorite";
+import heart from '../assets/picture/heart.svg';
+import heartSolid from '../assets/picture/heart-solid.svg';
 
 export default function Movie() {
     const { id } = useParams(); // Récupère l'ID du film à partir de l'URL
@@ -73,7 +76,8 @@ export default function Movie() {
                     <p>{movie.runtime} minutes</p>
                     <p> &#9733; {movie.vote_average.toFixed(1)} (IMDb)</p>
                     <button className="favorite" onClick={handleFavoriteToggle} disabled={isLoading}>
-                        {isLoading ? 'Loading...' : isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+                        
+                        {isLoading ? 'Loading...' : isFavorite ? <BtnFavorite src={heartSolid} className="heartSolid" /> : <BtnFavorite src={heart} className="heart" />}
                     </button>
                 </div>
                 <h1>{movie.title}</h1>

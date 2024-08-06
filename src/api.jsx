@@ -7,10 +7,13 @@ export const fetchGenres = async () => {
     return data.genres;
 };
 
-export const fetchMoviesByGenre = async (genreId) => {
-    const response = await fetch(`${apiUrl}/discover/movie?api_key=${tmdbApiKey}&with_genres=${genreId}`);
+export const fetchMoviesByGenre = async (genreId, page = 1) => {
+    const response = await fetch(`${apiUrl}/discover/movie?api_key=${tmdbApiKey}&with_genres=${genreId}&page=${page}`);
     const data = await response.json();
-    return data.results;
+    return {
+      movies: data.results || [],
+      totalPages: data.total_pages || 1
+  };
 };
 
 export const fetchMovies = async (query) => {

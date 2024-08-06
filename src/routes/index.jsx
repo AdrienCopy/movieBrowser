@@ -47,8 +47,8 @@ export default function Index() {
             </div>
             <div className="trending"><h2>Trending</h2></div>
             <section>
-                {movies.map(movie => (
-                    <div key={movie.id} className="movie-card">
+                {movies.map((movie, index) => (
+                    <div key={movie.id} className={`movie-card ${index === 0 ? 'movie-card--first' : ''}`}>
                         <Link to={`/movie/${movie.id}`}>
                             <figure><img className="imgPicture" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} /></figure>
                             <div className="movie-vote-average">
