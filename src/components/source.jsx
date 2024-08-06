@@ -11,7 +11,7 @@ const Source = () => {
             TMDb est une base de données collaborative de films et de séries télévisées. Merci à TMDb pour fournir ces précieuses informations.
         </p><br />
         <p>
-        Ce projet a été réalisé dans le cadre de la formation Becode en 2024.
+        Ce projet a été réalisé dans le cadre de la formation Becode en 2024. Le site est conçu en priorité pour les appareils mobiles.
         </p>
 
         </div>
