@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { fetchRequestToken, validateRequestToken, createSession } from '../api';
+import Source from './source';
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -25,7 +26,8 @@ const LoginForm = ({ onLogin }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="detail">
+    <div>
+      <form onSubmit={handleSubmit} className="detail">
       <div>
         <label>Username:</label><br />
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
@@ -37,6 +39,9 @@ const LoginForm = ({ onLogin }) => {
       <button type="submit">Login</button>
       {error && <p>{error}</p>}
     </form>
+    <Source />
+    </div>
+    
   );
 };
 
