@@ -30,7 +30,7 @@ const Dashboard = () => {
 
 
   return (
-    <div>
+    <div className='profil'>
       <div className='detail'>
       <h1>Welcome, {user ? user.name : 'User'}</h1>
       <br />

@@ -220,6 +220,10 @@ main section figure img:hover {
   color: #ffffff;
 }
 
+.profil {
+  margin-bottom: 150px;
+}
+
 .detail {
   margin: 5%;
 }

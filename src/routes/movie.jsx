@@ -75,10 +75,12 @@ export default function Movie() {
                 <div className="detail-row">
                     <p>{movie.runtime} minutes</p>
                     <p> &#9733; {movie.vote_average.toFixed(1)} (IMDb)</p>
+                    {user && (
                     <button className="favorite" onClick={handleFavoriteToggle} disabled={isLoading}>
                         
                         {isLoading ? 'Loading...' : isFavorite ? <BtnFavorite src={heartSolid} className="heartSolid" /> : <BtnFavorite src={heart} className="heart" />}
                     </button>
+                    )}
                 </div>
                 <h1>{movie.title}</h1>
                 
