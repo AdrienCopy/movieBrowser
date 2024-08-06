@@ -227,6 +227,10 @@ main section figure img:hover {
 .detail {
   margin: 5%;
 }
+.detail a {
+  text-decoration: none;
+  color: #808080;
+}
 @media screen and (min-width: 768px) {
   .detail {
     width: 60%;
