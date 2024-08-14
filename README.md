@@ -11,6 +11,16 @@ Création d'une app qui permet de consulter les information sur les films via l'
 - Affichage des films et de leurs note en tendance sur la page d'accueil et un video en rapport avec l'un des films.
 - Liens vers la description du film, durée du film, synopsis, date de sortie...
 - Page de recherche avec barre de recherche ou recherche par genre.
-- Page de connexion au compte de themoviedb.org](https://www.themoviedb.org/), avec affichage des favorie.
+- Page de connexion au compte de [themoviedb.org](https://www.themoviedb.org/), avec affichage des favorie.
 - Si vous etes connecter, possibiliter d'ajouter des films au favorie.
+
+### Lien
+
+[Movie Browser](https://movie-browser-three.vercel.app/)
+
+### Image
+
+![text](src/assets/picture/readme/iPhone-13-PRO-movie-browser-three.vercel.app%20(1).png)
+
+
 
