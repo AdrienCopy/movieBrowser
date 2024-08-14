@@ -6,6 +6,8 @@ Projet de développement d'une application web utilisant React et React Router, 
 ## Application Web Movie Browser
 Création d'une application permettant de consulter des informations sur les films via l'API de [The Movie Database (TMDb)](https://www.themoviedb.org/).
 
+Le projet **Movie Browser** a été développé en suivant une approche mobile first.
+
 ## Description fonctionnalité
 
 - **Page d'accueil :** Affichage des films tendances avec leurs notes, et une vidéo liée à l'un des films.
