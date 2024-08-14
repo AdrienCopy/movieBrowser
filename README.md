@@ -1,26 +1,31 @@
 # Projet Movie Browser
 
 ### Formation Becode
-Utilisation de React et de React-router avec Vite.
+Projet de développement d'une application web utilisant React et React Router, construit avec Vite.
 
-### Movie browser web application
-Création d'une app qui permet de consulter les information sur les films via l'API du site [themoviedb.org](https://www.themoviedb.org/).
+## Application Web Movie Browser
+Création d'une application permettant de consulter des informations sur les films via l'API de [The Movie Database (TMDb)](https://www.themoviedb.org/).
 
-### Description fonctionnalité
+## Description fonctionnalité
 
-- Affichage des films et de leurs note en tendance sur la page d'accueil et un video en rapport avec l'un des films.
-- Liens vers la description du film, durée du film, synopsis, date de sortie...
-- Page de recherche avec barre de recherche ou recherche par genre.
-- Page de connexion au compte de [themoviedb.org](https://www.themoviedb.org/), avec affichage des favorie.
-- Si vous etes connecter, possibiliter d'ajouter des films au favorie.
+- **Page d'accueil :** Affichage des films tendances avec leurs notes, et une vidéo liée à l'un des films.
+- **Détail des films :** Liens vers les descriptions détaillées des films incluant la durée, le synopsis, la date de sortie, etc.
+- **Recherche :** Page dédiée à la recherche de films via une barre de recherche ou par genre.
+- **Connexion :** Page de connexion au compte [TMDb](https://www.themoviedb.org/) avec affichage des favoris.
+- **Gestion des favoris :** Si connecté, possibilité d'ajouter ou de retirer des films de vos favoris.
 
-### Lien
+## Lien
 
 [Movie Browser](https://movie-browser-three.vercel.app/)
 
-### Image
+## Image
 
-![text](src/assets/picture/readme/iPhone-13-PRO-movie-browser-three.vercel.app%20(1).png)
+<p align="left">
+<img src="src/assets/picture/readme/iPhone-13-PRO-movie-browser-three.vercel.app.png" alt="Capture d'écran de l'application" width="200"/>
+<img src="src/assets/picture/readme/iPhone-13-PRO-movie-browser-three.vercel.app(1).png" alt="Capture d'écran de l'application" width="200"/>
+<img src="src/assets/picture/readme/iPhone-13-PRO-movie-browser-three.vercel.app(2).png" alt="Capture d'écran de l'application" width="200"/>
+<img src="src/assets/picture/readme/iPhone-13-PRO-movie-browser-three.vercel.app(3).png" alt="Capture d'écran de l'application" width="200"/>
+</p>
 
-
-
+### Remerciements
+Merci à l'équipe de BeCode pour le soutien et les ressources pendant ce projet.
