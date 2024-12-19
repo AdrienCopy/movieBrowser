@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/" },
+        { "source": "/movie/:id", "destination": "/" },
+        { "source": "/search", "destination": "/" },
+        { "source": "/profil", "destination": "/" }
+    ]
+  }
